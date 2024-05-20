@@ -6,13 +6,6 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.models import Point
 
 
-class FileUploadSerializer(serializers.Serializer):
-    file = serializers.FileField()
-
-    class Meta:
-        model = Point
-        fields = ('file',)
-
 class CookieTokenRefreshSerializer(TokenRefreshSerializer):
     refresh = None
 
@@ -42,3 +35,4 @@ class CookieTokenRefreshView(TokenRefreshView):
         return super().finalize_response(request, response, *args, **kwargs)
 
     serializer_class = CookieTokenRefreshSerializer
+
